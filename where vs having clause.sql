@@ -1,0 +1,16 @@
+-- WHERE VS HAVING CLAUSE
+-- WHERE CLAUSE FILTERS ROW LEVEL AND HAVING CLAUSE FILTERS THE AGGREGATE FUNCTION LEVEL
+-- HAVING IS ONLY GOING TO WORK FOR AGGREGATED FUNCTION COLUMNS AFTER THE GROUP BY RUNS
+
+SELECT gender, AVG(age)
+FROM parks_and_recreation.employee_demographics
+GROUP BY gender
+HAVING AVG(age) > 40
+;
+
+SELECT occupation, AVG(salary)
+FROM parks_and_recreation.employee_salary
+WHERE occupation LIKE '%manager%'
+GROUP BY occupation
+HAVING AVG(salary) > 75000
+;
